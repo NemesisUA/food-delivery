@@ -1,6 +1,6 @@
 import React from 'react'
 
-function Shops() {
+function ShopsPage() {
   return (
     <div className='Shops'>
       <h2>Shops</h2>
@@ -8,4 +8,4 @@ function Shops() {
   )
 }
 
-export default Shops
+export default ShopsPage
