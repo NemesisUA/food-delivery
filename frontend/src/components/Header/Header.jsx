@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 import './Header.css';
 import Button from '../UI/Button/Button';
 
@@ -12,10 +12,10 @@ export const Header = () => {
     <header className='header'>
       <div className='wrapper header__wrapper'>
         <div className='logo-wrapper'>
-          <NavLink to='/'>
+          <Link to='/'>
             <div className="logo"></div>
-          </NavLink>                
-          <h1 className="header__title"><span>F</span>ood Delivery</h1>
+          </Link>                
+          <h1 className="header__title">Food Delivery</h1>
         </div>
 
         <nav className="header__navigation">

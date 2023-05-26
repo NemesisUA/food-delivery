@@ -1,5 +1,4 @@
-
-import { createContext, useState, useEffect, useContext } from 'react';
+import { createContext, useState, useEffect} from 'react';
 import { LocalStorageService, LS_KEYS } from "../servises/localStorage";
 
 const ThemeContext = createContext();
