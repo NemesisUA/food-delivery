@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Link } from 'react-router-dom'
 import { Card } from "../components/UI/Card/Card";
 
 const ShopsPage = () => {
@@ -24,18 +25,14 @@ const ShopsPage = () => {
         <li>McDonny</li>
         <li>BurgerKing</li>
       </ul>
-
-      <ul className='products-list'>
-        { products && products.length > 0 && products.map( product => (
-          <li key={product._id}>
-            <Card 
-              title={product.name} 
-              src={product.image} 
-              price={product.price} 
-            />
-          </li>
-        ))}        
-      </ul>
+      
+      <div className='products-list'>
+        {products && products.length > 0 && products.map(product => (
+          <Link key={product._id} to={`/${product.shop}`} >
+            <Card product={product} />
+          </Link>
+        ))}
+      </div>
     </div>
   )
 }

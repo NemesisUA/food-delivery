@@ -1,16 +1,14 @@
 import React, { useContext } from 'react'
 import './Card.css'
-import { ThemeContext } from '../../../hoc/ThemeProvider'
 
-const Card = (props) => {
-  const { title, src, price } = props;
-  const { theme } = useContext(ThemeContext);  
+const Card = ({ product}) => { 
 
   return (
     <div className='card'>
-      <h3 className='card__title' >{title}</h3>
-      <img className='card__image' src={src} alt="food photo" />
-      <h4 className='card__price'>{`price - $${price}`}</h4>
+      <h2 className='card__title' >{product.name}</h2>
+      <p className='card__shop'>{product.shop}</p>
+      <img className='card__image' src={product.image} alt="food photo" />
+      <h4 className='card__price'>{`price - $${product.price}`}</h4>
     </div>
   )
 }
