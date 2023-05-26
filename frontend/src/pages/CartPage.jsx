@@ -1,19 +1,41 @@
-import React from 'react'
+import { useContext, useEffect } from 'react'
 import './styles/Cart.css'
+import { LocalStorageService, LS_KEYS } from "../servises/localStorage";
+import { CartContext } from "../hoc/CartProvider";
 
 function CartPage() {
-  return (
-    <div className='wrapper flex-wrapper'>
-      <div className='order-user'>
-        <p>form component here</p>
-      </div>
+  const { cartItems, setCartItems } = useContext(CartContext);
 
-      <div className='order-products'>
-       <p>product 1</p>
-       <p>product 2</p>
-       <p>product 3</p>
+  const totalPrice = [...cartItems].reduce((acc, cur) => { return acc + +cur.price }, 0).toFixed(2);
+
+  const handlePurchase = (e) => {
+    e.preventDefault();
+    setCartItems(() => []);
+    LocalStorageService.remove(LS_KEYS.CART);
+  }
+
+  return (
+    <>
+      <div className='wrapper flex-wrapper'>
+        <div className='order-user'>
+          <p>form component here</p>
+        </div>
+
+        <div className='order-products'>
+          <form onSubmit={handlePurchase}>
+            <ul className="cart-container">{
+              cartItems.map(item => (
+                <li key={item.id}>
+                  <p> name={item.name} price={item.price}</p>
+                </li>
+              ))
+            }
+            </ul>
+          </form>
+        </div>
       </div>
-    </div>
+      <h2>Total Price: {totalPrice}</h2>
+    </>
   )
 }
 
