@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 // get all products
 const getProducts = async (req, res) => {
   const products = await Products.find({});
-  
+  console.log('products found:', products)
   res.status(200).json(products);
 }
 

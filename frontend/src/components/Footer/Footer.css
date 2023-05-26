@@ -4,7 +4,7 @@ footer {
   display: flex;
   justify-content: center;
   align-items: center;    
-  box-shadow: 0 -3px 10px lightgray;
+  box-shadow: 0 1px 10px lightgray;
 }
 
 .footer-wrapper {
