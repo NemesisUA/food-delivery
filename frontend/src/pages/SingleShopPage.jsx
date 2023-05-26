@@ -27,9 +27,11 @@ const SingleShopPage = () => {
       
       <div className='products-list'>
         {products && products.length > 0 && products.map(product => (
-          <Link key={product._id} to={`/${product.shop}`} >
-            <Card product={product} />
-          </Link>
+          <li key={product._id} >
+            <Card product={product} 
+              button={'add to Cart'}
+            />
+          </li>
         ))}
       </div>
     </div>

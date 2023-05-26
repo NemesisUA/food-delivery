@@ -21,14 +21,14 @@ const ShopsPage = () => {
   return (
     <div className='wrapper flex-wrapper'>
       <ul className='shops-list'>
-        <li><Link to={'/KFC'}>KFC</Link></li>
-        <li><Link to={'/McDonny'}>McDonny</Link></li>
-        <li><Link to={'/BurgerKing'}>BurgerKing</Link></li>
+        <li><Link to={'/shops/KFC'}>KFC</Link></li>
+        <li><Link to={'/shops/McDonny'}>McDonny</Link></li>
+        <li><Link to={'/shops/BurgerKing'}>BurgerKing</Link></li>
       </ul>
       
       <div className='products-list'>
         {products && products.length > 0 && products.map(product => (
-          <Link key={product._id} to={`/${product.shop}`} >
+          <Link key={product._id} to={`/shops/${product.shop}`} >
             <Card product={product} />
           </Link>
         ))}
