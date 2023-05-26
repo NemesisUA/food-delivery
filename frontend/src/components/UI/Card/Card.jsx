@@ -1,8 +1,25 @@
-import React, { useContext } from 'react'
+import { useContext, useEffect } from 'react'
 import Button from '../Button/Button'
 import './Card.css'
 
-const Card = ({ product, button = false}) => { 
+import { LocalStorageService, LS_KEYS } from "../../../servises/localStorage";
+import { CartContext } from "../../../hoc/CartProvider";
+
+
+const Card = ({ product, buttonText = false, onClick}) => {
+  const { cartItems, setCartItems } = useContext(CartContext);
+
+  const handleAddToCart = () => {     
+    setCartItems((prevstate) => ([...prevstate.filter(el => el.id !== product._id), {
+      id: product._id,
+      name: product.name,
+      price: product.price
+    }]));        
+  }
+
+  useEffect(() => {
+    LocalStorageService.set(LS_KEYS.CART, cartItems); 
+  }, [cartItems])
 
   return (
     <div className='card'>
@@ -11,7 +28,13 @@ const Card = ({ product, button = false}) => {
       <img className='card__image' src={product.image} alt="food photo" />
       <div className='card__buy'>
         <h4 className='card__price'>{`price - $${product.price}`}</h4>
-        { button && <Button children={button} className='styled-btn transparent' />}
+        { buttonText && (
+          <Button 
+            children={buttonText} 
+            className='styled-btn transparent'
+            onClick={handleAddToCart} 
+          />
+        )}
       </div>
       
     </div>

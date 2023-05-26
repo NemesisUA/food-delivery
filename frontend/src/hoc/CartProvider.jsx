@@ -1,5 +1,5 @@
 import { createContext, useState } from "react";
-import { LocalStorageService, LS_KEYS } from "../services/localStorage";
+import { LocalStorageService, LS_KEYS } from "../servises/localStorage";
 
 export const CartContext = createContext([], () => { });
 
