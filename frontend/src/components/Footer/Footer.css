@@ -11,7 +11,7 @@ footer {
   text-align: center;
 }
 
-.github-link {
+a.github-link {
   margin-left: 20px;
   color: var(--color-primary);
   transition: all 0.3s ease-in;

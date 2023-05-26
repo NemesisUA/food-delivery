@@ -21,9 +21,9 @@ const ShopsPage = () => {
   return (
     <div className='wrapper flex-wrapper'>
       <ul className='shops-list'>
-        <li>KFC</li>
-        <li>McDonny</li>
-        <li>BurgerKing</li>
+        <li><Link to={'/KFC'}>KFC</Link></li>
+        <li><Link to={'/McDonny'}>McDonny</Link></li>
+        <li><Link to={'/BurgerKing'}>BurgerKing</Link></li>
       </ul>
       
       <div className='products-list'>
