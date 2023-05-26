@@ -1,5 +1,6 @@
 const LS_KEYS = {
-  THEME: 'theme',  
+  THEME: 'theme',
+  CART: 'cart' 
 }
 
 class LocalStorageService {
