@@ -25,10 +25,6 @@
   animation: wiggle 2s linear infinite;
 }
 
-/* .logo:hover {  
-  animation: wingle 2s linear;
-} */
-
 @keyframes wiggle {
   0%, 7% {
     transform: rotateZ(0);
@@ -75,8 +71,7 @@
   font-size: 5rem;  
   font-family: var(--font-primary);  
   text-transform: capitalize;
-  font-style: italic;
-  cursor: pointer;
+  font-style: italic;  
   margin: 2rem 0;
   color: var(--color-primary);
   transition: all 0.3s ease-in;

@@ -9,7 +9,7 @@ const ShopsPage = () => {
     const fetchProducts = async () => {
       const response = await fetch('/api/products')
       const json = await response.json()
-      console.log('json:', json);
+      
       if (response.ok) {
         setProducts(json)
       }

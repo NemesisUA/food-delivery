@@ -17,6 +17,7 @@
 .products-list {
   display: flex;
   flex-wrap: wrap;
+  width: 100%;
   justify-content: center;
   gap: 40px;
   list-style: none;
@@ -45,16 +46,22 @@
   transition: all 0.3s ease-in;
 }
 
+.shops-list li.selected {
+  cursor: default;
+}
+
 .dark .shops-list li {
   color: #FF9900;  
 }
 
-.shops-list li:hover {
+.shops-list li:hover,
+.shops-list li.selected {
   color: #fff;
   background-color: #FF9900;  
 }
 
-.dark .shops-list li:hover {
+.dark .shops-list li:hover,
+.dark .shops-list li.selected {
   color: #fff;
   background-color: #e68c70;  
 }
