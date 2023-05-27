@@ -1,5 +1,12 @@
 .header {
   width: 100%;
+  position: fixed;  
+  z-index: 10; 
+  background-color: #fff;
+}
+
+.dark .header {
+  background-color: #333;
 }
 
 .light .header {
@@ -155,7 +162,7 @@
   bottom: 30px;
   right: 15px;
   width: 20px;
-  height: 20px;
+  height: 22px;
   font-weight: bold;
   text-align: center;
   vertical-align: middle;
@@ -163,7 +170,7 @@
   background-color: #fff;
   border-radius: 50%;
   border: 1px solid red;
-  margin: 0 auto;
+  margin: 0 auto;  
 }
 
 @media screen and (max-width: 991px) {

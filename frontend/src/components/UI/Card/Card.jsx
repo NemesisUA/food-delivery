@@ -13,7 +13,9 @@ const Card = ({ product, buttonText = false, onClick}) => {
     setCartItems((prevstate) => ([...prevstate.filter(el => el.id !== product._id), {
       id: product._id,
       name: product.name,
-      price: product.price
+      price: product.price,
+      image: product.image,
+      amount: 1
     }]));        
   }
 
