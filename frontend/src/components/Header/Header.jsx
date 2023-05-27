@@ -4,9 +4,13 @@ import './Header.css';
 import Button from '../UI/Button/Button';
 
 import { ThemeContext } from '../../hoc/ThemeProvider';
+import { CartContext } from '../../hoc/CartProvider';
 
 export const Header = () => {
   const {theme, toggleTheme} = useContext(ThemeContext);
+  const {cartItems} = useContext(CartContext);
+
+  const itemsInCart = cartItems.length;
 
   return (
     <header className='header'>
@@ -24,7 +28,15 @@ export const Header = () => {
               <NavLink to='/' className="navigation__link">Shops</NavLink>
             </li>
             <li className="navigation__item">
-              <NavLink to='cart' className="navigation__link">Cart</NavLink>
+              <NavLink to='cart' className="navigation__link">
+                <div className='cart'>
+                  {
+                    itemsInCart ? <div className="cart-items">
+                      {itemsInCart}
+                    </div> : ''
+                  }
+                </div>
+              </NavLink>
             </li>
           </ul>
           
