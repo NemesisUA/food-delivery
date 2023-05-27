@@ -53,3 +53,10 @@
 .styled-btn:active {
   transform: translateY(1px);
 }
+
+.styled-btn:disabled {
+  background-color: grey;
+  border: grey;
+  cursor: default;
+  transform: none;
+}
