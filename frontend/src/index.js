@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { BrowserRouter} from 'react-router-dom';
+import { HashRouter} from 'react-router-dom';
 import './index.css';
 import App from './App';
 import { ThemeProvider } from './hoc/ThemeProvider';
@@ -11,9 +11,9 @@ root.render(
   <React.StrictMode>
     <ThemeProvider>      
       <CartProvider>
-        <BrowserRouter>
+        <HashRouter>
           <App />
-        </BrowserRouter>
+        </HashRouter>
       </CartProvider>
     </ThemeProvider>
   </React.StrictMode>

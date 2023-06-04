@@ -3,41 +3,45 @@ import './CartItem.css';
 import { LocalStorageService, LS_KEYS } from "../../servises/localStorage";
 import { CartContext } from "../../hoc/CartProvider";
 
-function CartItem({ name, price, image, id}) {
-  const { cartItems, setCartItems } = useContext(CartContext);
+function CartItem({name, price, image, id, amount }) {
+  const { 
+    cartItems,
+    setCartItems,
+    totalPrice,   
+    shopChosen,
+    setShopChosen
+  } = useContext(CartContext);
   
-  const storageAmount = LocalStorageService.get(LS_KEYS.CART) ?
-  [...LocalStorageService.get(LS_KEYS.CART)]
-      .filter(el => el.id === id)
-      .map(el => el.amount)[0]
-  : 1;
-
-const [amount, setAmount] = useState(storageAmount || 1);        
+  const [count, setCount] = useState(+amount);
   
   const handleDeleteCartItem = (e) => {
-    e.preventDefault();     
-    setCartItems(prevstate => ([...prevstate.filter(el => el.id !== id)]));    
+    e.preventDefault();
+    
+    if ( cartItems.length === 1) {
+      setShopChosen('');
+    }
+    setCartItems(prevstate => ([...prevstate.filter(el => el.id !== id)]));     
   }
 
-  useEffect(() => {
-    LocalStorageService.set(LS_KEYS.CART, cartItems);
-  }, [cartItems]);
-
-  const handleAmount = (e) => {    
-    setAmount(prev => e.target.value); 
+    const handleAmount = (e) => {    
+    setCount(() => +e.target.value);
     
     setCartItems((prevstate) => ([...prevstate.filter(el => el.id !== id), {
       id: id,
       name: name,
       price: price,
       image: image,
-      amount: amount
-  }]));
+      amount: count
+    }].sort((a, b)=> a.id - b.id)));
   }
 
   useEffect(() => {
-    LocalStorageService.set(LS_KEYS.CART,cartItems )
-  }, [cartItems])
+    LocalStorageService.set(LS_KEYS.CART, {
+      "shopChosen": shopChosen,
+      "totalPrice": totalPrice,
+      "cartItems": cartItems,
+    });
+  }, [cartItems, totalPrice, shopChosen]);
 
   return (
     <div className='cart-item'>
@@ -51,8 +55,7 @@ const [amount, setAmount] = useState(storageAmount || 1);
 
         <input 
           className='cart-item__input' 
-          type="number" 
-          placeholder={1}
+          type="number"          
           min={1} 
           value={amount}
           onChange={handleAmount}
